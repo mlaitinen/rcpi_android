@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fullscreen_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".TouchControlActivity">
+
+    <SeekBar
+        android:id="@+id/control_accel"
+        android:rotation="270"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginLeft="40dp"
+        android:layout_weight="1"
+        android:max="200"
+        android:thumb="@android:color/transparent"/>
+
+    <SeekBar
+        android:id="@+id/control_turn"
+        android:rotation="180"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginRight="40dp"
+        android:layout_weight="1"
+        android:max="200"
+        android:thumb="@android:color/transparent"/>
+
+</LinearLayout>
