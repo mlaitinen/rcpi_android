@@ -16,7 +16,7 @@ public class SendMessageTask extends AsyncTask<ControlEvent, Void, Void> {
 
     private DatagramSocket socket;
 
-    private InetAddress address;,
+    private InetAddress address;
 
     private int port;
 
