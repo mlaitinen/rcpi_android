@@ -16,7 +16,7 @@ public class SendMessageTask extends AsyncTask<ControlEvent, Void, Void> {
 
     private DatagramSocket socket;
 
-    private InetAddress address;
+    private InetAddress address;,
 
     private int port;
 
@@ -39,10 +39,10 @@ public class SendMessageTask extends AsyncTask<ControlEvent, Void, Void> {
             Log.e(getClass().getName(), "Failed to send a UDP packet.", e);
         }
 
-        Log.d(getClass().getName(),
+        /*Log.d(getClass().getName(),
                 String.format("Sent message. Control: %d, magnitude: %d.",
                         controlEvents[0].getControlCode(),
-                        controlEvents[0].getMagnitude()));
+                        controlEvents[0].getMagnitude()));*/
 
         return null;
     }

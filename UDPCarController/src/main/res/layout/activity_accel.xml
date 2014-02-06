@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fullscreen_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    android:orientation="vertical"
+    tools:context=".TiltTouchActivity">
+
+    <TextView
+        android:id="@+id/text_accesspoint"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="3dp"
+        android:text="Access point: ?"/>
+
+    <TextView
+        android:id="@+id/text_accel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="3dp"
+        android:text="Acceleration: 0"/>
+
+    <TextView
+        android:id="@+id/text_turn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="3dp"
+        android:text="Turn: 0"/>
+
+    <fi.ninjaware.udpcarcontroller.ArrowImageView
+        android:id="@+id/image_accel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/arrow_accel"
+        custom:orientation="vertical" />
+
+    <fi.ninjaware.udpcarcontroller.ArrowImageView
+        android:id="@+id/image_turn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/arrow_turn"
+        custom:orientation="horizontal" />
+
+</LinearLayout>
