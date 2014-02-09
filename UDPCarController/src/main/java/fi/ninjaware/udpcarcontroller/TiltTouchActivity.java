@@ -38,6 +38,8 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
 
     private byte previousTurn = 0;
 
+    private byte previousAccel = 0;
+
     private ArrowImageView mImageAccel;
 
     private ArrowImageView mImageTurn;
@@ -125,11 +127,15 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
                 break;
         }
 
-        mDispatcher.sendMessage(ControlType.ACCELERATION, accel);
+        if(accel != previousAccel) {
+            mDispatcher.sendMessage(ControlType.ACCELERATION, accel);
 
-        mTextAccel.setText(String.format("Acceleration: %d", accel));
-        mImageAccel.setMagnitude(accel);
-        mImageAccel.invalidate();
+            mTextAccel.setText(String.format("Acceleration: %d", accel));
+            mImageAccel.setMagnitude(accel);
+            mImageAccel.invalidate();
+
+            previousAccel = accel;
+        }
 
         return true;
     }
