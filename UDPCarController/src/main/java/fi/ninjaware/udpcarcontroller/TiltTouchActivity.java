@@ -32,9 +32,9 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
 
     private Sensor mMagnetometer;
 
-    private float[] mGravity = null;
+    private float[] mGravity = new float[3];
 
-    private float[] mGeomagnetic = null;
+    private float[] mGeomagnetic = new float[3];
 
     private byte previousTurn = 0;
 
@@ -143,8 +143,8 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_UI);
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
@@ -157,31 +157,30 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            mGravity = event.values;
+            mGravity = event.values.clone();
         }
 
         if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-            mGeomagnetic = event.values;
+            mGeomagnetic = event.values.clone();
         }
 
-        if (mGravity != null && mGeomagnetic != null) {
-            float R[] = new float[9];
-            float I[] = new float[9];
-            boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
-            if (success) {
-                float orientation[] = new float[3]; // azimuth, pitch, roll.
-                SensorManager.getOrientation(R, orientation);
+        float R[] = new float[9];
+        float I[] = new float[9];
+        boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
+        if (success) {
+            float orientation[] = new float[3]; // azimuth, pitch, roll.
+            SensorManager.getOrientation(R, orientation);
 
-                byte turn = convertPitchToTurn(orientation[1]);
-                if(turn != previousTurn) {
-                    mDispatcher.sendMessage(ControlType.TURN, turn);
+            byte turn = convertPitchToTurn(orientation[1]);
+            if(turn != previousTurn) {
 
-                    mTextTurn.setText(String.format("Turn: %d", turn));
-                    mImageTurn.setMagnitude(turn);
-                    mImageTurn.invalidate();
+                mDispatcher.sendMessage(ControlType.TURN, turn);
 
-                    previousTurn = turn;
-                }
+                mTextTurn.setText(String.format("Turn: %d", turn));
+                mImageTurn.setMagnitude(turn);
+                mImageTurn.invalidate();
+
+                previousTurn = turn;
             }
         }
     }
