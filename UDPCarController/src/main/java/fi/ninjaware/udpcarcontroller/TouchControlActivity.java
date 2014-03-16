@@ -56,7 +56,7 @@ public class TouchControlActivity extends Activity {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int value, boolean b) {
-            mDispatcher.sendMessage(controlType, getMagnitude(seekBar.getMax(), value));
+            mDispatcher.sendMessage(new ControlEvent(controlType, getMagnitude(seekBar.getMax(), value)));
         }
 
         @Override
@@ -67,7 +67,7 @@ public class TouchControlActivity extends Activity {
         public void onStopTrackingTouch(SeekBar seekBar) {
             int progress = seekBar.getMax() / 2;
             seekBar.setProgress(progress);
-            mDispatcher.sendMessage(controlType, getMagnitude(seekBar.getMax(), progress));
+            mDispatcher.sendMessage(new ControlEvent(controlType, getMagnitude(seekBar.getMax(), progress)));
         }
 
         private byte getMagnitude(int max, int rawValue) {

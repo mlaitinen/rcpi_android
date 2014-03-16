@@ -128,7 +128,7 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
         }
 
         if(accel != previousAccel) {
-            mDispatcher.sendMessage(ControlType.ACCELERATION, accel);
+            mDispatcher.sendMessage(new ControlEvent(ControlType.ACCELERATION, accel));
 
             mTextAccel.setText(String.format("Acceleration: %d", accel));
             mImageAccel.setMagnitude(accel);
@@ -174,7 +174,7 @@ public class TiltTouchActivity extends Activity implements SensorEventListener {
             byte turn = convertPitchToTurn(orientation[1]);
             if(turn != previousTurn) {
 
-                mDispatcher.sendMessage(ControlType.TURN, turn);
+                mDispatcher.sendMessage(new ControlEvent(ControlType.TURN, turn));
 
                 mTextTurn.setText(String.format("Turn: %d", turn));
                 mImageTurn.setMagnitude(turn);
