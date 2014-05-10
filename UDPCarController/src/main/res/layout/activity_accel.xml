@@ -8,26 +8,70 @@
     android:orientation="vertical"
     tools:context=".TiltTouchActivity">
 
-    <TextView
-        android:id="@+id/text_accesspoint"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_margin="3dp"
-        android:text="Access point: ?"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/text_accel"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_margin="3dp"
-        android:text="Acceleration: 0"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_turn"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_margin="3dp"
-        android:text="Turn: 0"/>
+            <TextView
+                android:id="@+id/text_accesspoint"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="3dp"
+                android:text="Access point: ?"/>
+
+            <TextView
+                android:id="@+id/text_signal_strength"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="3dp"
+                android:text="Signal strength: ?"/>
+
+            <TextView
+                android:id="@+id/text_accel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="3dp"
+                android:text="Acceleration: 0"/>
+
+            <TextView
+                android:id="@+id/text_turn"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_margin="3dp"
+                android:text="Turn: 0"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/button_max_angle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set max angle"
+                android:gravity="right"/>
+            <Button
+                android:id="@+id/button_controls_enabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Eng + steer"
+                android:gravity="right"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
 
     <fi.ninjaware.udpcarcontroller.ArrowImageView
         android:id="@+id/image_accel"

@@ -28,7 +28,7 @@
         
     </application>
 
-    <!-- To get the access point IP. -->
+    <!-- To get the access point IP and monitor the signal strength. -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- To send UDP packets. -->
